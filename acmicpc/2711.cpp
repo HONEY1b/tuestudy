@@ -1,24 +1,25 @@
 //2711
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string.h>
 using namespace std;
-char * str;
 
 int main(void){
 	ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    
-    int t,n;
-    cin >>t;
-    while(t--){
-    	cin >> n;
-    	cin >> str;
-    	cout << str;
-		int llen = strlen(str);
-		for(int i=0;i<llen;i++){
-			if(i!=n-1){
-				printf("%s",str[i]);
+	cin.tie(0);	
+	
+	freopen("2711.txt","r",stdin);
+	int t;
+	cin>>t;
+	while(t--){
+		int a;
+		string str;
+		cin>>a>>str;
+		for(int i=0;i<str.length();i++){
+			if(i!=a-1){
+				cout<<str[i];
 			}
 		}
+		cout<<'\n';
 	}
 	
 	return 0;
