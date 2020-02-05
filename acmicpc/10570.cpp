@@ -1,27 +1,35 @@
 //10570
 #include<bits/stdc++.h>
 using namespace std;
+
 int arr[1010];
+int num=1000;
 int main(void){
-	ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    
-    int n;
-    cin >> n;
-    while(n--){
-    	int v,max=-987654321,maxin=987654321;
-    	cin >> v;
-    	for(int i=0;i<v;i++){
-    		int a;
-			cin>>a;
+	freopen("10570.txt","r",stdin);
+	int t;
+	scanf("%d",&t);
+	while(t--){
+		memset(arr,0,sizeof(arr));
+		int n;
+		scanf("%d",&n);
+		for(int i=0;i<n;i++){
+			int a;
+			scanf("%d",&a);
 			arr[a]++;
-			if(max<arr[a]&&maxin>a){
-				max=arr[a];
-				maxin=a;
+		}
+		int ans=987654321,cnt=0;
+		for(int i=1;i<=num;i++){
+			if(cnt<arr[i]){
+				ans=i,cnt=arr[i];
+			}else if(cnt==arr[i]){
+				if(i<ans){
+					ans=i,cnt=arr[i];	
+				}
 			}
 		}
-		printf("%d\n",maxin);	
+		printf("%d\n",ans);
 	}
+	
 	
 	return 0;
 }
