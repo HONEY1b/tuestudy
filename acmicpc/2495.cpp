@@ -2,23 +2,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 int arr[12];
+int check[12];
 int maxi;
 
-int f(int x,int exx){
-	if(x==0){
-		for(int i=1;i<=10;i++){
-			if(maxi<arr[i]){
-				maxi=arr[i];
-			}
+int f(void){
+	for(int i=0;i<9;i++){
+		check[i]=1;
+		if(arr[i]==arr[i+1]){
+			check[i+1]=check[i]+1;	
 		}
-		return maxi;
 	}
-	if(x%10 == exx){
-		arr[x%10]++;	
-	}else{
-		arr[x%10]=1;	
+	for(int i=0;i<10;i++){
+		if(check[i]>maxi){
+			maxi=check[i];
+		}
 	}
-	f(x/10,x%10);
+	return maxi;
 }
 
 int main(void){
@@ -27,13 +26,12 @@ int main(void){
 	
 	freopen("2495.txt","r",stdin);
 	
-	int a;
 	for(int i=0;i<3;i++){
-		cin>>a;
-		cout<<f(a,0)<<'\n';
-		for(int i=1;i<=10;i++){
-			arr[i]=0;	
+		for(int i=0;i<10;i++){
+			scanf("%1d",arr[i]);
 		}
+		cout<<f()<<'\n';
+		memset(arr,0,sizeof(arr));
 	}
 	return 0;
 }

@@ -18,10 +18,8 @@ int main(void){
 		for(int j=0;j<i;j++){
 			if(v[i].second>v[j].second && d[i]<d[j]+1){
 				d[i]=d[j]+1;
-				printf("%d %d\n",v[i].second,v[j].second);
 			}
 		}
-		printf("\n\n");
 	}
 	int maxi=0;
 	for(int i=0;i<v.size();i++){
