@@ -4,6 +4,8 @@
 int t,a,b,ans;
 int arr[1010];
 bool find;
+
+/*
 int f(int n1,int n2,int com){
 //	if(n1==1 || n2==1) return n1*n2*com;
 	int small=n1<n2?n1:n2;
@@ -21,9 +23,23 @@ int f(int n1,int n2,int com){
 		return ans;	
 	}
 	find=0;
-	f(n1,n2,com);
-	
+	f(n1,n2,com);	
 }
+*/
+
+int f(int x,int y){
+	int small=x<y?x:y,big=x>y?x:y;
+	
+	int g;
+	for(int i=small;i>0;i--){
+		if(small%i==0 && big%i==0){
+			g=i;
+			break;
+		}
+	}
+	return x*y/g;
+}
+
 int main(void){
 	freopen("1934.txt","r",stdin);
 	
@@ -31,7 +47,7 @@ int main(void){
 	
 	for(int i=0;i<t;i++){
 		scanf("%d %d",&a,&b);
-		arr[i]=f(a,b,1);
+		arr[i]=f(a,b);
 		printf("%d\n",arr[i]);	
 	}
 	
