@@ -7,7 +7,7 @@ int ans,Mini=MAX;
 vector<int> d;
 
 void f(int num,int a){
-	printf("%d %d\n",num,a);
+	//printf("%d %d\n",num,a);
 	if(num>Mini) return;
 	if(!a) {
 		if(num<Mini){
