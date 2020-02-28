@@ -12,18 +12,16 @@ int main(void){
 	
 	scanf("%d",&t);
 	
-	for(int i=0;i<t;i++){
+	while(t--){
 		scanf("%d",&n);
 		total_c=0,total_g=0;
 		for(int j=0;j<n;j++){
 			int a;
-			float b;
-			scanf("%d %f",&a,&b);
+			double b;
+			scanf("%d %lf",&a,&b);
 			total_c+=a;
 			total_g+=b;
-			//printf("%.1f %.1f \n",b,total_g);
-		}	
-		avg_g=total_g/n;
+		}
 		printf("%d %.1f\n",total_c,total_g/n);
 		
 	}
