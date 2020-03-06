@@ -1,44 +1,31 @@
-//1978
+//1929
 #include<stdio.h>
-#include<vector>
-#include<iostream>
-using namespace std;
-
-int d[1010],arr[110];
-vector<int> prime;
-int n,cnt,notprime;
-int main(void){
-	freopen("1978.txt","r",stdin);
-	
-	//소수=0 소수x=1
-	d[1]=2;
-	prime.push_back(2);
-	prime.push_back(3);
-	for(int i=4;i<=1000;i++){
-		for(int j=0;j<prime.size();j++){
-			if(notprime==2)break;
-			if(i%prime[j]==0) {
-				d[i]=1;
-				notprime=2;
-			}
-		}
-		if(!notprime) {
-			prime.push_back(i);
-		}
-		else if(notprime==2){
-			notprime=0;
+int n,m;
+bool arr[1010];
+bool f(int num){
+	for(int i=2;i*i<=num;i++){
+		if(num%i==0){
+			return true;
 		}
 	}
-	
-//	for(int i=1;i<=1000;i++){
-//		if(d[i]==0) printf("%d\n",i);
-//	}
-	
+	return false;
+}
+int main(void){
+	freopen("1978.txt","r",stdin);
 	scanf("%d",&n);
-	for(int i=0;i<n;i++){
-		scanf("%d",&arr[i]);
-		if(!d[i]) cnt++;
-	}	
+	arr[1]=true;
+	for(int i=4;i<=1000;i++){
+		arr[i]=f(i);
+	}
+	int cnt=0;
+	for(int i=1;i<=n;i++){
+		int a;
+		scanf("%d",&a);
+		if(arr[a]==false){
+			cnt++;	
+		}
+	}
 	printf("%d\n",cnt);
+	
 	return 0;
 }
