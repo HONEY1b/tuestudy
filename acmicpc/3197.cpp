@@ -9,6 +9,7 @@ int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
 
 bool bfs(int sx,int sy){
+//	printf("sx,sy :%d %d\n",sx,sy);
 	queue<pair<int,int> > q;
 	q.push(make_pair(sx,sy));
 	check[sx][sy]=true;
@@ -19,12 +20,14 @@ bool bfs(int sx,int sy){
 		int x=q.front().first,y=q.front().second;
 		int days=check[x][y];
 		
+		printf("x,y,days :%d %d %d\n",x,y,days);
+		
 		if(x==arr[1][0] && y==arr[1][1]) {return true;}
 		
 		for(int i=0;i<4;i++){
 			int nx=x+dx[i],ny=y+dy[i];
 			
-			if(nx>0&&nx<h && nx>0&&ny<w && !check[nx][ny] && mapp[nx][ny]=='.'){
+			if(nx>0&&nx<h && nx>0&&ny<w && check[nx][ny]==false && mapp[nx][ny]=='.'){
 				q.push(make_pair(nx,ny));
 				check[nx][ny]=true;
 			}
@@ -37,6 +40,7 @@ bool bfs(int sx,int sy){
 void melt(){
 	for(int i=0;i<w;i++){
 		for(int j=0;j<h;j++){
+			printf("%d %d\n",i,j);
 			if(mapp[i][j]=='.'){
 				for(int k=0;k<4;k++){
 					int nx=i+dx[k],ny=j+dy[k];
@@ -48,15 +52,19 @@ void melt(){
 }
 
 int main(void){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
+//	ios_base::sync_with_stdio(0);
+//	cin.tie(0);
 	
 	freopen("3197.txt","r",stdin);
-	cin>>h>>w;
+	scanf("%d %d",&h,&w);
+	//cin>>h>>w;
 	int p=0;
+	
 	for(int i=0;i<h;i++){
-		cin>>mapp[i];
+		//cin>>mapp[i];
+		scanf("%s",&mapp[i]);
 		for(int j=0;j<w;j++){
+			scanf("%1s",&mapp[i][j]);
 			if(mapp[i][j]=='L'){
 				arr[p][0]=i,arr[p][1]=j;
 				p++;
@@ -65,11 +73,15 @@ int main(void){
 		}
 	}
 	
-	cout<<h<<w<<endl;
-	for(int i=0;i<h;i++){cout<<mapp[i]<<'\n';}
+//	for(int i=0;i<h;i++){
+//		for(int j=0;j<w;j++){
+//			printf("%s",&mapp[i][j]);
+//		}
+//		printf("\n");
+//	}
+    printf("test1\n");
 	
-	
-	/*
+
 	//³ìÀÌ±â
 	int cnt=0;
 	while(true){
@@ -84,8 +96,8 @@ int main(void){
 		}
 		//for(int i=0;i<h;i++){cout<<mapp[i]<<'\n';}cout<<'\n';	
 	}
-	cout<<cnt;
-	*/
+	printf("%d",cnt);
+	//cout<<cnt;
 	
 	return 0;
 }
