@@ -1,58 +1,42 @@
 //10971
-#include<bits/stdc++.h>
+#include<stdio.h>
+#define MAX 0x7fffffff
 using namespace std;
-int n,MAX=2147483647;
-int mapp[15][15];
-int check[15];
-int d[15][15];
-int ans=2147483647;
+int n;
+int arr[15][15];
+bool check[15];
 
+int min(int a,int b){return (a>b)?b:a;}
 
-void f(int s,int e,int cur,int sum){
-	bool isOk=true;
-	for(int i=1;i<=n;i++){
-		if(check[i]==0){
-			isOk=false;
+int f(int level,int dist,int cur,int start){
+	check[cur]=true;
+	if(level==n-1){
+		if(arr[cur][start]<=0) return MAX;
+		else return dist+arr[cur][start];
+	}
+	int res=MAX;
+	for(int i=0;i<n;i++){
+		if(!check[i] && arr[cur][i]>0){
+			check[i]=true;
+			res=min(res,f(level+1,dist+arr[cur][i],i,start));
+			check[i]=false;	
 		}
 	}
-	if(isOk){
-		if(sum<ans) {
-			sum=ans;
-		}
-		return;
-	}
-	
-	for(int i=1;i<=n;i++){
-		if(!check[i]){
-			check[i]=1;
-			f(s,e,i,sum+mapp[cur][i]);
-			f(s,e,i,sum);
-			check[i]=0;
-		}
-	}
+	return res;
 }
 
 
 int main(void){
 	freopen("10971.txt","r",stdin);
 	scanf("%d",&n);
-	for(int i=1;i<=n;i++){
-		for(int j=1;j<=n;j++){
-			scanf("%d",&mapp[i][j]);
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			scanf("%d",&arr[i][j]);	
 		}
 	}
-	
-	int cur=2147483647;
-	for(int i=1;i<=n;i++){
-		memset(d,0,sizeof(d));
-		memset(check,0,sizeof(check));
-		
-		f(1,1,1,0);
-
-//		for(int i=1;i<=n;i++){for(int j=1;j<=n;j++){printf("%d\t",d[i][j]);}printf("\n");}printf("\n");
-
-		if(cur<ans){ans=cur;}	
-	}
+	int ans=MAX;
+	int tmp=f(0,0,1,1);	
+	if(ans>tmp) ans=tmp;
 	printf("%d\n",ans);
 	
 	return 0;
