@@ -14,16 +14,16 @@ bool Prime(int num){
 }
 
 void f(int level,int num){
-	printf("%d %d\n",level,num);
 	if(Prime(num)){cnt++;}
-	if(level>=len){return;}
+	if(level==len){return;}
 	
 	for(int i=0;i<len;i++){
-		if(c[i])continue;
-		c[i]=1;
-		num=num*10+arr[i];
-		f(level+1,num);
-		c[i]=0;
+		if(!c[i]){
+			c[i]=1;
+			num=num*10+arr[i];
+			f(level+1,num);
+			c[i]=0;
+		}
 	}
 }
 
@@ -46,8 +46,7 @@ int main (void){
 		//소수인지 판단 
 		cnt=0;
 		f(0,0); 
-		printf("%d\n\n\n",cnt);
-		
+		printf("%d\n",cnt);
 	}
 	
 	return 0;
