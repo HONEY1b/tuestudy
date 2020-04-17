@@ -7,22 +7,17 @@ int main(void){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 
-	cin >>n>>k;
+	cin>>n>>k;
 	
 	d[1][1]=1;
-	for(int i=1;i<=k;i++){
-		for(int j=1;j<=n;j++){
-			for(int l=1;l<=j;l++){
-				d[i][j]+=d[i-1][j-l];	
-				d[i][j]%=mod;
-			}
-			cout<<d[i][j]<<" ";
+	for(int i=1;i<=n;i++){
+		for(int j=0;j<=k;j++){
+			for(int m=0;m<=j;m++){
+				d[i][k]+=d[i-1][j-1];
+				d[i][k]%=mod;
+			}	
 		}
-		cout<<endl;
 	}
-	cout <<endl;
-	
-	cout<<d[k][n];
-	
+	cout<<d[n][k];
 	return 0;
 }
