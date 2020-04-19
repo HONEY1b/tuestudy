@@ -1,14 +1,14 @@
 //1629
 #include<stdio.h>
-long long a,b,c,div,res;
+long long res;
+
+
 
 int main(void){
+	long long a,b,c;
 	scanf("%lld %lld %lld",&a,&b,&c);	
 	div=a;
-	for(int i=0;i<b;i++){
-		div=div*a%c;
-	}
-	printf("%lld\n",div);
+	printf("%lld\n",f(a,b,c));
 	
 	return 0;
 }
