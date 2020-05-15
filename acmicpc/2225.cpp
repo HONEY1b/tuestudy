@@ -16,14 +16,14 @@ int main(void){
 	cin.tie(0);
 
 	cin>>n>>k;
-	d[0][0]=1;
+	d[0][0]=1LL;
 	for(int i=1;i<=k;i++){
 		for(int j=0;j<=n;j++){
 			for(int m=0;m<=j;m++){
 				d[i][j]+=d[i-1][j-m];
 				d[i][j]%=mod;
 			}
-			printfD();	
+			//printfD();	
 		}
 	}
 	cout<<d[k][n];
