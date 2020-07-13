@@ -12,7 +12,10 @@ struct Pair{
 
 bool cmp(Pair a,Pair b){
 	if(a.age<b.age){return a.age<b.age;}
-	else return a.index<b.index;
+	else if(a.age==b.age){
+		return a.index<b.index;
+	}
+	return a.age<b.age;
 }
 
 int main(void){
