@@ -4,14 +4,15 @@ int n,m;
 int arr[10];
 int c[10];
 void f(int level){
-	if(level>n){
-		for(int i=1;i<=m;i++){
+	if(level>m){
+		for(int i=1;i<level;i++){
 			printf("%d ",arr[i]);
-		}printf("\n");
+		}
+		printf("\n");
 		return;
 	}
-	for(int i=1;i<=level;i++){
-		if(c[level]==0){
+	for(int i=1;i<=n;i++){
+		if(c[i]==0){
 			arr[level]=i;
 			c[i]=1;
 			f(level+1);	
