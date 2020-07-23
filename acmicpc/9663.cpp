@@ -11,8 +11,12 @@ void f(int x,int y,int level){
 	if(level==n){
 		
 	}
-	for(int i=0;i<4;i++){
+	int cross=0;
+	for(int i=1;i<n;i++){
+		cross++;
+		if(){
 			
+		}
 	}
 	
 }
