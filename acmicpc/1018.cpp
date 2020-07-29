@@ -6,47 +6,55 @@
 */
 #include<bits/stdc++.h>
 using namespace std;
-int n,m;
-//char arr[60][60];
-int dx[]={0,1};
-int dy[]={1,0};
+char arr[60][60];
+char map1[8][8]{
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'}
+};
+char map2[8][8]{
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'},
+	{'W','B','W','B','W','B','W','B'},
+	{'B','W','B','W','B','W','B','W'}
+};
 
-int f(int x,int y,char color,char arr[60][60]){
+int n,m;
+
+int f(int y,int x,int type){
 	int cnt=0;
-	if(arr[x][y]!=color){
-		cnt++;
-		if(arr[x][y]=='B'){
-			arr[x][y]='W';
-		}else{
-			arr[x][y]='B';
-		}
-	}
-	
-	for(int i=x;i<x+8;i++){
-		for(int j=y;j<y+8;j++){
-			for(int k=0;k<2;k++){
-				int nx=i+dx[k],ny=j+dy[k];
-				if(arr[i][j] == arr[nx][ny]){
-					cnt++;
-					if(arr[nx][ny]=='B'){
-						arr[nx][ny]='W';	
-					}else{
-						arr[nx][ny]='B';
-					}
-				}
+	for(int i=y;i<y+8;i++){
+		for(int j=x;j<x+8;j++){
+			if(map1[i-y][j-x]!=arr[i][j]){
+				cnt++;	
 			}
 		}
 	}
-	printf("%d %d\n",x,y);
-	printf("%d\n",cnt);
-	for(int i=0;i<n;i++){for(int j=0;j<m;j++){printf("%c ",arr[i][j]);}printf("\n");}printf("\n\n");
-	
+	return cnt;
+}
+int f2(int y,int x,int type){
+	int cnt=0;
+	for(int i=y;i<y+8;i++){
+		for(int j=x;j<x+8;j++){
+			if(map2[i-y][j-x]!=arr[i][j]){
+				cnt++;	
+			}
+		}
+	}
 	return cnt;
 }
 
 int main(void){
-	char arr[60][60];
-	char arr2[60][60];
+
 	freopen("1018.txt","r",stdin);
 	scanf("%d %d",&n,&m);
 	for(int i=0;i<n;i++){
@@ -63,26 +71,10 @@ int main(void){
 			//맵사이즈되나 확인
 			if(i+8>n || j+8>m){continue;} 
 			//w로 시작
-			for(int i=0;i<n;i++){
-				for(int j=0;j<m;j++){
-					arr2[i][j]=arr[i][j];
-				}
-			}
-			int tmp=f(i,j,'W',arr2);
-			
-			//b로 시작 
-			for(int i=0;i<n;i++){
-				for(int j=0;j<m;j++){
-					arr2[i][j]=arr[i][j];
-				}
-			}
-			int tmp2=f(i,j,'B',arr2);
-			if(tmp<ans){
-				ans=tmp;
-			}
-			if(tmp2<ans){
-				ans=tmp2;	
-			}
+			int tmp1=f(i,j,1);
+			ans=min(ans,tmp1);
+			int tmp2=f2(i,j,2);
+			ans=min(ans,tmp2);
 		}
 	}
 	
