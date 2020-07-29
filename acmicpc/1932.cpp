@@ -22,7 +22,7 @@ int main(void){
 	ans[1][1]=arr[1][1];
 	ans[2][1]=arr[2][1]+ans[1][1];
 	ans[2][2]=arr[2][2]+ans[1][1];
-	printf("%d\n%d %d\n",ans[1][1],ans[2][1],ans[2][2]);
+	//printf("%d\n%d %d\n",ans[1][1],ans[2][1],ans[2][2]);
 	for(int i=3;i<=n;i++){
 		for(int j=1;j<=i;j++){
 			ans[i][j]=Max;
