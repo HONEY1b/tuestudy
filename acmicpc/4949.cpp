@@ -1,9 +1,9 @@
 //4949
 #include<bits/stdc++.h>
 using namespace std;
-char str[100];
+//char str[100];
 
-bool f(){
+bool f(char str[100]){
 	stack<int> st;
 	int len=strlen(str);
 	for(int i=0;i<len;i++){
@@ -33,11 +33,12 @@ int main(void){
 	cin.tie(0); cout.tie(0);
 	freopen("4949.txt","r",stdin);
 	while(1){
+		char str[100];
 		cin.getline(str, 100);
 		if(strlen(str)==1 && strcmp(".",str)==0){
 			break;
 		}else{
-			if(f()){
+			if(f(str)){
 				cout<<"yes\n";
 			}else{
 				cout<<"no\n";	
