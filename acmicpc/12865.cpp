@@ -16,7 +16,11 @@ int main(void){
 		scanf("%d %d",&arr[i][0],&arr[i][1]);	
 	}
 	int vol=0;
-	
+	d[0][0]=0;
+	for(int i=1;i<=n;i++){
+		
+		
+	}
 	printf("%lld\n",dp(n,m));
 	
 	return 0;

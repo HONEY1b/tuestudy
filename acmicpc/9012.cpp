@@ -1,36 +1,36 @@
 //9012
-#include<stdio.h>
-#include<stack>
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-int t;
-bool f(string str){
-	stack<char> st;
-	for(int i=0;i<str.length();i++){
-		if(str[i]=='(') {st.push('(');}
-		else if(str[i]==')'){
-			if(st.empty()){return false;}
-			if(st.top()=='(') st.pop();
+char str[100];
+int n;
+bool f(){
+	stack<int> st;
+	int len=strlen(str);
+	for(int i=0;i<len;i++){
+		if(str[i]=='('){
+			st.push(1);
+		}else if(str[i]==')'){
+			if(st.empty()) return false;
+			if(st.top()==1){
+				st.pop();
+			}else 
+				return false;
 		}
 	}
 	return st.empty();
 }
 int main(void){
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-//	freopen("9012.txt","r",stdin);	
-	scanf("%d",&t);
-	while(t--){
-		bool ans=true;
-		string s;
-		
-		cin>>s;
-		
-		if(f(s)){
-			printf("YES\n");	
+	freopen("9012.txt","r",stdin);
+	cin>>n;
+	
+	for(int i=0;i<n;i++){
+		cin>>str;
+		if(f()){
+			cout<<"YES\n";	
 		}else{
-			printf("NO\n");	
-		}	
+			cout<<"NO\n";
+		}
 	}
+	
 	return 0;
 }
