@@ -12,11 +12,8 @@ int main(void){
 	d[0]=1,d[1]=1,d[2]=2,d[3]=5;
 	for(int i=4;i<=n;i++){
 		for(int j=0;j<i;j++){
-			cout<<"i="<<i<<" "<<j<<" "<<d[j]<<", "<<i-j-1<<" "<<d[i-j-1]<<endl;
 			d[i]+=(d[j]*d[i-j-1]);
-			//cout<<i<<" "<<j<<" "<<n-j-1<<" "<<d[i]<<endl;
 		}
-		cout<<"\n\n";
 	}
 	cout<<d[n];
 	
