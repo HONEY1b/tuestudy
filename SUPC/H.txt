@@ -1,0 +1,18 @@
+5 4
+abcdeabcdeabcdeabcdeabcdeabcde
+red
+blue
+purple
+orange
+abcdeabcdeabcdeabcdeabcdeabcdf
+shift
+joker
+noon
+6
+abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdff
+redshift
+bluejoker
+purplenoon
+orangeshift
+whiteblue
+
