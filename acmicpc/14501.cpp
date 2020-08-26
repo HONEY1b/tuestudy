@@ -1,8 +1,8 @@
 //14501
 #include<iostream>
 using namespace std;
-int d[20];
-int t[20],p[20];
+int d[30];
+int t[30],p[30];
 int main(void){
 	freopen("14501.txt","r",stdin);
 	int n;
@@ -18,13 +18,7 @@ int main(void){
 		}
 	}
 	
-	for(int i=0;i<n;i++){
-		cout<<i<<"\t";	
-	}cout<<endl;
-	for(int i=0;i<n;i++){
-		cout<<d[i]<<"\t";	
-	}cout<<"\n\n";
-	cout<<d[n+1]<<endl;
+	cout<<d[n]<<endl;
 	
 	return 0;
 }

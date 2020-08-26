@@ -1,32 +1,10 @@
 //1149
-#include<stdio.h>
-#include<string.h>
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int n,mini=0x7fffffff;
 int arr[1010][3];
+int d[1010][3];
 int color[1010];//R=0,G=1,B=2
-
-void f(int level,int total,int cur){
-	if(total>=mini) return;
-	//for(int i=0;i<n;i++){printf("%d",color[i]);}printf(" %d\n",total);
-	if(level>=n){
-		for(int i=0;i<n-1;i++){
-			if(color[i]==color[i+1]) return;	
-		}
-		if(mini>total){
-			mini=total;
-		}
-		return;
-	}
-	
-	for(int j=0;j<3;j++){
-		if(j!=cur){
-			color[level]=j;
-			f(level+1,total+arr[level][j],j);
-		}
-	}
-}
 
 int main(void){
 	freopen("1149.txt","r",stdin);
@@ -39,8 +17,15 @@ int main(void){
 		arr[i][2]=c;
 	}
 	memset(color,-1,sizeof(color));
-	f(0,0,-1);
-	
-	printf("%d\n",mini);
+	d[0][0]=arr[0][0],d[0][1]=arr[0][1],d[0][2]=arr[0][2];
+	for(int i=1;i<n;i++){
+		d[i][0]=min(d[i-1][1]+arr[i][0],d[i-1][2]+arr[i][0]);
+		d[i][1]=min(d[i-1][0]+arr[i][1],d[i-1][2]+arr[i][1]);
+		d[i][2]=min(d[i-1][0]+arr[i][2],d[i-1][1]+arr[i][2]);
+	}
+	int ans=0;
+	ans=min(d[n-1][0],d[n-1][1]);
+	ans=min(ans,d[n-1][2]);
+	printf("%d\n",ans);
 	return 0;
 }
