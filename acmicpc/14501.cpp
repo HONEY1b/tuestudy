@@ -13,8 +13,6 @@ int main(void){
 	for(int i=1;i<=n;i++){
 		if(i+t[i]<=n) {
 			d[i+t[i]]=max(d[i+t[i]],d[i]+p[i]);
-		}else{
-			d[i]=d[i-1];	
 		}
 	}
 	
