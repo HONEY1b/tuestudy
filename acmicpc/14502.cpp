@@ -85,7 +85,7 @@ int main(void){
 		}
 	}
 	n+=2;m+=2;
-	for(int i=0;i<n;i++){for(int j=0;j<m;j++){printf("%d ",arr[i][j]);}printf("\n");}printf("\n\n\n");
+	//for(int i=0;i<n;i++){for(int j=0;j<m;j++){printf("%d ",arr[i][j]);}printf("\n");}printf("\n\n\n");
 	
 	makeWall(0,0,0);
 	
